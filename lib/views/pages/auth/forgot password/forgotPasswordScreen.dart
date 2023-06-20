@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:when_i_work/utils/App%20Bar/appbars.dart';
-import 'package:when_i_work/utils/TextFields/custom_auth_textfield.dart';
+import 'package:when_i_work/views/widgets/appbars.dart';
+import 'package:when_i_work/views/widgets/custom_auth_textfield.dart';
 import 'package:when_i_work/utils/size_config.dart';
+
+import '../../../../constants/textstyles.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   ForgotPasswordScreen({super.key});
@@ -13,10 +15,16 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar.simpleappbar(context, leading: Icons.arrow_back_rounded,
-          onleadingtap: () {
-        Get.back();
-      }, title: "Welcome", action: Icons.send, onactiontap: () {}),
+      appBar: BaseAppBar(
+        appBar: AppBar(),
+        leading: Icons.arrow_back_ios_new_rounded,
+        title: "When I Work",
+        onleadingtap: () {
+          Get.back();
+        },
+        action: Icons.send,
+        onactiontap: () {},
+      ),
       body: Container(
         height: SizeConfig.heightMultiplier * 100,
         width: SizeConfig.widthMultiplier * 100,
@@ -24,13 +32,17 @@ class ForgotPasswordScreen extends StatelessWidget {
             horizontal: SizeConfig.widthMultiplier * 4,
             vertical: SizeConfig.heightMultiplier * 2),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomAuthTextField(
-              hintText: "Email",
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
+            Text(
+              "Email",
+              style: AppTextStyles.bodyMedium(),
             ),
+            SizedBox(height: SizeConfig.heightMultiplier * .5),
+            CustomAuthTextField(
+                hintText: "Enter Your Email",
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress),
           ],
         ),
       ),

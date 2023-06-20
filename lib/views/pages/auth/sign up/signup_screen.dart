@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:when_i_work/constants/colors.dart';
-import 'package:when_i_work/utils/App%20Bar/appbars.dart';
-import 'package:when_i_work/utils/TextFields/custom_auth_textfield.dart';
+import 'package:when_i_work/views/widgets/appbars.dart';
+import 'package:when_i_work/views/widgets/custom_auth_textfield.dart';
 import 'package:when_i_work/utils/size_config.dart';
 import 'package:when_i_work/views/widgets/sign_with_google_widget.dart';
 
-import '../../../../utils/Buttons/primary_button.dart';
+import '../../../../constants/textstyles.dart';
+import '../../../widgets/primary_button.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -26,13 +27,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar.simpleappbar(context, leading: Icons.arrow_back_rounded,
-          onleadingtap: () {
-        Get.back();
-      }, title: "Sign Up"),
+      appBar: BaseAppBar(
+        appBar: AppBar(),
+        leading: Icons.arrow_back_ios_new_rounded,
+        title: "Sign Up",
+        onleadingtap: () {
+          Get.back();
+        },
+      ),
       bottomSheet: PrimaryButton(
         callback: () {},
-        color: AppColors.kprimary,
+        color: AppColors.primaryClr,
         height: SizeConfig.heightMultiplier * 6,
         width: SizeConfig.widthMultiplier * 100,
         title: "Sign Up",
@@ -46,38 +51,65 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Column(
           children: [
             SizedBox(height: SizeConfig.heightMultiplier * 2),
-            CustomAuthTextField(
-              controller: nameController,
-              labelText: "Full Name",
-              floatingLabelSize: SizeConfig.textMultiplier * 1.8,
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Name",
+                style: AppTextStyles.bodyMedium(),
+              ),
             ),
+            SizedBox(height: SizeConfig.heightMultiplier * .5),
             CustomAuthTextField(
               controller: nameController,
-              labelText: "Email",
-              floatingLabelSize: SizeConfig.textMultiplier * 1.8,
+              hintText: "Enter Full Name",
             ),
-            CustomAuthTextField(
-              controller: nameController,
-              labelText: "Mobile Number",
-              floatingLabelSize: SizeConfig.textMultiplier * 1.8,
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Email",
+                style: AppTextStyles.bodyMedium(),
+              ),
             ),
+            SizedBox(height: SizeConfig.heightMultiplier * .5),
             CustomAuthTextField(
-              controller: nameController,
-              labelText: "Create Password",
-              floatingLabelSize: SizeConfig.textMultiplier * 1.8,
+              controller: emailController,
+              hintText: "Enter Your Email",
+            ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Number",
+                style: AppTextStyles.bodyMedium(),
+              ),
+            ),
+            SizedBox(height: SizeConfig.heightMultiplier * .5),
+            CustomAuthTextField(
+              controller: numberController,
+              hintText: "Enter Mobile Number",
+            ),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "Password",
+                style: AppTextStyles.bodyMedium(),
+              ),
+            ),
+            SizedBox(height: SizeConfig.heightMultiplier * .5),
+            CustomAuthTextField(
+              controller: passwordController,
+              hintText: "Create Password",
             ),
             SizedBox(height: SizeConfig.heightMultiplier * 1),
             Text(
               "Your password must be at least 10 characters, and cannot contain your email address or common phrares.",
-              style: TextStyle(
-                  fontSize: SizeConfig.textMultiplier * 1.6,
-                  color: AppColors.ktext),
+              style: AppTextStyles.bodySmall()
+                  .copyWith(color: AppColors.kgreyColor),
             ),
             SizedBox(height: SizeConfig.heightMultiplier * 3),
             Row(
               children: [
                 Checkbox(
-                  activeColor: AppColors.kprimary,
+                  activeColor: AppColors.primaryClr,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(3)),
                   value: privacyPolicy,
@@ -89,27 +121,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 Text(
                   "I accept the",
-                  style: TextStyle(
-                      fontSize: SizeConfig.textMultiplier * 1.9,
-                      color: AppColors.ktext),
+                  style: AppTextStyles.bodyMedium(),
                 ),
                 Text(
                   " terms ",
-                  style: TextStyle(
-                      fontSize: SizeConfig.textMultiplier * 1.9,
-                      color: AppColors.kprimary),
+                  style: AppTextStyles.bodyMedium()
+                      .copyWith(color: AppColors.kSecondaryColor),
                 ),
                 Text(
                   "and",
-                  style: TextStyle(
-                      fontSize: SizeConfig.textMultiplier * 1.9,
-                      color: AppColors.ktext),
+                  style: AppTextStyles.bodyMedium(),
                 ),
                 Text(
                   " privacy policy",
-                  style: TextStyle(
-                      fontSize: SizeConfig.textMultiplier * 1.9,
-                      color: AppColors.kprimary),
+                  style: AppTextStyles.bodyMedium()
+                      .copyWith(color: AppColors.kSecondaryColor),
                 ),
               ],
             ),

@@ -20,8 +20,8 @@ class SignWithGoogleWidget extends StatelessWidget {
         height: SizeConfig.heightMultiplier * 4,
         width: width,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(3),
-          border: Border.all(color: const Color(0xff9E9E9E)),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(color: AppColors.kgreyColor),
         ),
         child: Row(
           children: [
@@ -35,7 +35,7 @@ class SignWithGoogleWidget extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                  color: AppColors.ktext, fontWeight: FontWeight.w500),
+                  color: AppColors.ktextColor, fontWeight: FontWeight.w500),
             ),
             const Spacer(),
           ],

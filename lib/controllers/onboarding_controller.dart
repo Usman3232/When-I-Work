@@ -13,7 +13,7 @@ class OnboardingController extends GetxController {
       "title": "Easier time tracking",
       "description":
           "Integrate Your schedule with the time clock and rduce labor costs",
-      "image": "assets/images/time tracking.json",
+      "image": "assets/images/tracking.json",
     },
     {
       "title": "Better communicaton",

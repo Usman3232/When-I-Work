@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
-  static const kprimary = Color(0xff2AA3FF);
-  static const ktext = Color(0xff033346);
+  static const primaryClr = Color(0xff2AA3FF);
+  static const kSecondaryColor = Color(0xff0376AD);
+  static const kaccentColor = Color(0xff7EAFD2);
+  static const ktextColor = Color(0xff033346);
+  static const kgreyColor = Colors.black26;
+  static const kwhiteColor = Colors.white;
 
   // Error and Success Colors
   static const error = Color(0xffe53935);

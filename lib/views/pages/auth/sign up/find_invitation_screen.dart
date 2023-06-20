@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:when_i_work/utils/App%20Bar/appbars.dart';
-import 'package:when_i_work/utils/Buttons/primary_button.dart';
-import 'package:when_i_work/utils/TextFields/custom_auth_textfield.dart';
+import 'package:when_i_work/constants/textstyles.dart';
+import 'package:when_i_work/views/widgets/appbars.dart';
+import 'package:when_i_work/views/widgets/primary_button.dart';
+import 'package:when_i_work/views/widgets/custom_auth_textfield.dart';
 import 'package:when_i_work/utils/size_config.dart';
 import '../../../../constants/colors.dart';
 
@@ -13,13 +14,17 @@ class FindInvitationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar.simpleappbar(context, leading: Icons.arrow_back_rounded,
-          onleadingtap: () {
-        Get.back();
-      }, title: "Find my invitation"),
+      appBar: BaseAppBar(
+        appBar: AppBar(),
+        leading: Icons.arrow_back_ios_new_rounded,
+        title: "Find my invitation",
+        onleadingtap: () {
+          Get.back();
+        },
+      ),
       bottomSheet: PrimaryButton(
         callback: () {},
-        color: AppColors.kprimary,
+        color: AppColors.primaryClr,
         height: SizeConfig.heightMultiplier * 6,
         width: SizeConfig.widthMultiplier * 100,
         title: "Check for Invite",
@@ -37,10 +42,7 @@ class FindInvitationScreen extends StatelessWidget {
             Text(
               "Enter your email address or mobile number and we'll check to see if you've invited to join your team.",
               textAlign: TextAlign.center,
-              style: TextStyle(
-                  color: AppColors.ktext,
-                  fontWeight: FontWeight.w400,
-                  fontSize: SizeConfig.textMultiplier * 1.9),
+              style: AppTextStyles.bodyMedium(),
             ),
             SizedBox(height: SizeConfig.heightMultiplier * 3),
             CustomAuthTextField(
